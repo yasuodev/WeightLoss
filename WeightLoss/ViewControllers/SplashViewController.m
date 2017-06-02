@@ -32,6 +32,15 @@
     
     float buttonHeight = screenSize.height * 53 / 667.0;
     
+    self.btnExercises.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.btnExercises.layer.borderWidth = 1.0f;
+    self.btnExercises.layer.cornerRadius = buttonHeight / 4.0f;
+    
+    self.btnBMI.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.btnBMI.layer.borderWidth = 1.0f;
+    self.btnBMI.layer.cornerRadius = buttonHeight / 4.0f;
+    
+    
     self.btnLogin.layer.borderColor = [UIColor whiteColor].CGColor;
     self.btnLogin.layer.borderWidth = 1.0f;
     self.btnLogin.layer.cornerRadius = buttonHeight / 2.0f;
@@ -45,16 +54,18 @@
 
 - (IBAction)onForgotPassword:(id)sender {
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Forgot Password?" message:@"Please enter your email address to recover password." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Forgot Password?" message:@"Please enter your User ID address to recover password." preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"example@email.com";
+//        textField.placeholder = @"example@email.com";
     }];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
         NSArray * textfields = alertController.textFields;
-        UITextField * emailField = textfields[0];
-        [self forgotPasswordMethod:emailField.text];
+        UITextField * useridField = textfields[0];
+        //[self forgotPasswordMethod:emailField.text];
+        
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     
@@ -62,22 +73,6 @@
     
 }
 
--(void)forgotPasswordMethod:(NSString*)email
-{
-    NSDictionary *dicParameter = @{@"email": email};
-    
-    /*
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [[WebServiceManager sharedInstance] sendPostRequest:ForgotPassword param:dicParameter completionHandler:^(id obj) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self showDefaultAlert:nil withMessage:@"Please check your email to reset password"];
-    } errorHandler:^(NSURLSessionDataTask *task, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self showDefaultAlert:@"Error" withMessage:@"Invalid email."];
-    }];
-    */
-}
 
 #pragma mark - show default alert
 

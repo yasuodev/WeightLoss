@@ -19,6 +19,20 @@
 		D7B351891EE1C34B00EBEB02 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351861EE1C34B00EBEB02 /* SplashViewController.m */; };
 		D7B3518B1EE1C78000EBEB02 /* backIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7B3518A1EE1C78000EBEB02 /* backIcon.png */; };
 		D7B3518E1EE1DD0400EBEB02 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B3518D1EE1DD0400EBEB02 /* MainViewController.m */; };
+		D7B3519A1EE1F96800EBEB02 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351901EE1F96800EBEB02 /* OpenSans-Bold.ttf */; };
+		D7B3519B1EE1F96800EBEB02 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351911EE1F96800EBEB02 /* OpenSans-BoldItalic.ttf */; };
+		D7B3519C1EE1F96800EBEB02 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351921EE1F96800EBEB02 /* OpenSans-ExtraBold.ttf */; };
+		D7B3519D1EE1F96800EBEB02 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351931EE1F96800EBEB02 /* OpenSans-ExtraBoldItalic.ttf */; };
+		D7B3519E1EE1F96800EBEB02 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351941EE1F96800EBEB02 /* OpenSans-Italic.ttf */; };
+		D7B3519F1EE1F96800EBEB02 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351951EE1F96800EBEB02 /* OpenSans-Light.ttf */; };
+		D7B351A01EE1F96800EBEB02 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351961EE1F96800EBEB02 /* OpenSans-LightItalic.ttf */; };
+		D7B351A11EE1F96800EBEB02 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351971EE1F96800EBEB02 /* OpenSans-Regular.ttf */; };
+		D7B351A21EE1F96800EBEB02 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351981EE1F96800EBEB02 /* OpenSans-Semibold.ttf */; };
+		D7B351A31EE1F96800EBEB02 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7B351991EE1F96800EBEB02 /* OpenSans-SemiboldItalic.ttf */; };
+		D7B351A61EE2067600EBEB02 /* ExercisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351A51EE2067600EBEB02 /* ExercisesViewController.m */; };
+		D7B351A91EE2068700EBEB02 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351A81EE2068700EBEB02 /* ProgressViewController.m */; };
+		D7B351AC1EE206F600EBEB02 /* BMIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351AB1EE206F600EBEB02 /* BMIViewController.m */; };
+		D7B351B01EE20B1500EBEB02 /* UIView+DCAnimationKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351AF1EE20B1500EBEB02 /* UIView+DCAnimationKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +55,24 @@
 		D7B3518A1EE1C78000EBEB02 /* backIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backIcon.png; path = images/backIcon.png; sourceTree = "<group>"; };
 		D7B3518C1EE1DD0400EBEB02 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ViewControllers/MainViewController.h; sourceTree = "<group>"; };
 		D7B3518D1EE1DD0400EBEB02 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ViewControllers/MainViewController.m; sourceTree = "<group>"; };
+		D7B351901EE1F96800EBEB02 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		D7B351911EE1F96800EBEB02 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-BoldItalic.ttf"; path = "fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		D7B351921EE1F96800EBEB02 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBold.ttf"; path = "fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D7B351931EE1F96800EBEB02 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-ExtraBoldItalic.ttf"; path = "fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		D7B351941EE1F96800EBEB02 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Italic.ttf"; path = "fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		D7B351951EE1F96800EBEB02 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Light.ttf"; path = "fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		D7B351961EE1F96800EBEB02 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-LightItalic.ttf"; path = "fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		D7B351971EE1F96800EBEB02 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		D7B351981EE1F96800EBEB02 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Semibold.ttf"; path = "fonts/OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		D7B351991EE1F96800EBEB02 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "fonts/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		D7B351A41EE2067600EBEB02 /* ExercisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExercisesViewController.h; path = ViewControllers/ExercisesViewController.h; sourceTree = "<group>"; };
+		D7B351A51EE2067600EBEB02 /* ExercisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExercisesViewController.m; path = ViewControllers/ExercisesViewController.m; sourceTree = "<group>"; };
+		D7B351A71EE2068700EBEB02 /* ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressViewController.h; path = ViewControllers/ProgressViewController.h; sourceTree = "<group>"; };
+		D7B351A81EE2068700EBEB02 /* ProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressViewController.m; path = ViewControllers/ProgressViewController.m; sourceTree = "<group>"; };
+		D7B351AA1EE206F600EBEB02 /* BMIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BMIViewController.h; path = ViewControllers/BMIViewController.h; sourceTree = "<group>"; };
+		D7B351AB1EE206F600EBEB02 /* BMIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BMIViewController.m; path = ViewControllers/BMIViewController.m; sourceTree = "<group>"; };
+		D7B351AE1EE20B1500EBEB02 /* UIView+DCAnimationKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+DCAnimationKit.h"; path = "Libraries/UIView+DCAnimationKit.h"; sourceTree = "<group>"; };
+		D7B351AF1EE20B1500EBEB02 /* UIView+DCAnimationKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+DCAnimationKit.m"; path = "Libraries/UIView+DCAnimationKit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +105,8 @@
 		D769BDBB1EE16DDF002A0252 /* WeightLoss */ = {
 			isa = PBXGroup;
 			children = (
+				D7B351AD1EE20B0400EBEB02 /* Libraries */,
+				D7B3518F1EE1F94C00EBEB02 /* fonts */,
 				D7B351801EE1C33D00EBEB02 /* ViewControllers */,
 				D7B3517D1EE1BC8E00EBEB02 /* images */,
 				D769BDBF1EE16DDF002A0252 /* AppDelegate.h */,
@@ -115,8 +149,40 @@
 				D7B351861EE1C34B00EBEB02 /* SplashViewController.m */,
 				D7B3518C1EE1DD0400EBEB02 /* MainViewController.h */,
 				D7B3518D1EE1DD0400EBEB02 /* MainViewController.m */,
+				D7B351A41EE2067600EBEB02 /* ExercisesViewController.h */,
+				D7B351A51EE2067600EBEB02 /* ExercisesViewController.m */,
+				D7B351A71EE2068700EBEB02 /* ProgressViewController.h */,
+				D7B351A81EE2068700EBEB02 /* ProgressViewController.m */,
+				D7B351AA1EE206F600EBEB02 /* BMIViewController.h */,
+				D7B351AB1EE206F600EBEB02 /* BMIViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D7B3518F1EE1F94C00EBEB02 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D7B351901EE1F96800EBEB02 /* OpenSans-Bold.ttf */,
+				D7B351911EE1F96800EBEB02 /* OpenSans-BoldItalic.ttf */,
+				D7B351921EE1F96800EBEB02 /* OpenSans-ExtraBold.ttf */,
+				D7B351931EE1F96800EBEB02 /* OpenSans-ExtraBoldItalic.ttf */,
+				D7B351941EE1F96800EBEB02 /* OpenSans-Italic.ttf */,
+				D7B351951EE1F96800EBEB02 /* OpenSans-Light.ttf */,
+				D7B351961EE1F96800EBEB02 /* OpenSans-LightItalic.ttf */,
+				D7B351971EE1F96800EBEB02 /* OpenSans-Regular.ttf */,
+				D7B351981EE1F96800EBEB02 /* OpenSans-Semibold.ttf */,
+				D7B351991EE1F96800EBEB02 /* OpenSans-SemiboldItalic.ttf */,
+			);
+			name = fonts;
+			sourceTree = "<group>";
+		};
+		D7B351AD1EE20B0400EBEB02 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				D7B351AE1EE20B1500EBEB02 /* UIView+DCAnimationKit.h */,
+				D7B351AF1EE20B1500EBEB02 /* UIView+DCAnimationKit.m */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,9 +244,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				D769BDCF1EE16DDF002A0252 /* LaunchScreen.storyboard in Resources */,
+				D7B351A31EE1F96800EBEB02 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				D7B3519D1EE1F96800EBEB02 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				D7B351A01EE1F96800EBEB02 /* OpenSans-LightItalic.ttf in Resources */,
 				D7B3517F1EE1BCB000EBEB02 /* background.png in Resources */,
+				D7B3519E1EE1F96800EBEB02 /* OpenSans-Italic.ttf in Resources */,
+				D7B3519A1EE1F96800EBEB02 /* OpenSans-Bold.ttf in Resources */,
+				D7B3519C1EE1F96800EBEB02 /* OpenSans-ExtraBold.ttf in Resources */,
+				D7B3519B1EE1F96800EBEB02 /* OpenSans-BoldItalic.ttf in Resources */,
 				D769BDCC1EE16DDF002A0252 /* Assets.xcassets in Resources */,
 				D7B3518B1EE1C78000EBEB02 /* backIcon.png in Resources */,
+				D7B3519F1EE1F96800EBEB02 /* OpenSans-Light.ttf in Resources */,
+				D7B351A11EE1F96800EBEB02 /* OpenSans-Regular.ttf in Resources */,
+				D7B351A21EE1F96800EBEB02 /* OpenSans-Semibold.ttf in Resources */,
 				D769BDC71EE16DDF002A0252 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,11 +269,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7B351881EE1C34B00EBEB02 /* SignupViewController.m in Sources */,
+				D7B351A91EE2068700EBEB02 /* ProgressViewController.m in Sources */,
+				D7B351B01EE20B1500EBEB02 /* UIView+DCAnimationKit.m in Sources */,
 				D7B351891EE1C34B00EBEB02 /* SplashViewController.m in Sources */,
+				D7B351AC1EE206F600EBEB02 /* BMIViewController.m in Sources */,
 				D769BDCA1EE16DDF002A0252 /* WeightLoss.xcdatamodeld in Sources */,
 				D7B3518E1EE1DD0400EBEB02 /* MainViewController.m in Sources */,
 				D769BDC11EE16DDF002A0252 /* AppDelegate.m in Sources */,
 				D769BDBE1EE16DDF002A0252 /* main.m in Sources */,
+				D7B351A61EE2067600EBEB02 /* ExercisesViewController.m in Sources */,
 				D7B351871EE1C34B00EBEB02 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
