@@ -22,6 +22,8 @@
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     self.underlineCenterConstraint.constant = -screenSize.width / 4.0f;
     
+    [self.standardSubView setHidden:NO];
+    [self.metricSubView setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +51,8 @@
     [self.btnStandard setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.btnMetric setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     
+    [self.standardSubView setHidden:NO];
+    [self.metricSubView setHidden:YES];
 }
 
 - (IBAction)onMetric:(id)sender {
@@ -64,6 +68,9 @@
     
     [self.btnStandard setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.btnMetric setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [self.standardSubView setHidden:YES];
+    [self.metricSubView setHidden:NO];
     
 }
 

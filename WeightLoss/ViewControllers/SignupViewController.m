@@ -1,10 +1,4 @@
-//
-//  SignupViewController.m
-//  Pulse
-//
-//  Created by Kevin on 11/29/16.
-//  Copyright © 2016 Kevin. All rights reserved.
-//
+
 
 #import "SignupViewController.h"
 #import "LoginViewController.h"

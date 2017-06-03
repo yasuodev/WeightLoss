@@ -1,10 +1,4 @@
-//
-//  SplashViewController.m
-//  Pulse
-//
-//  Created by Kevin on 12/21/16.
-//  Copyright © 2016 Kevin. All rights reserved.
-//
+
 
 #import "SplashViewController.h"
 

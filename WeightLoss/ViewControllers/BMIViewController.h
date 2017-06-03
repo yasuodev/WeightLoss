@@ -19,6 +19,11 @@
 @property (weak, nonatomic) IBOutlet UIView *underlineView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *underlineCenterConstraint;
 
+@property (weak, nonatomic) IBOutlet UIView *standardSubView;
+@property (weak, nonatomic) IBOutlet UIView *metricSubView;
+
+
+
 - (IBAction)onStandard:(id)sender;
 - (IBAction)onMetric:(id)sender;
 

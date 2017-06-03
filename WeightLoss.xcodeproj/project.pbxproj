@@ -33,6 +33,8 @@
 		D7B351A91EE2068700EBEB02 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351A81EE2068700EBEB02 /* ProgressViewController.m */; };
 		D7B351AC1EE206F600EBEB02 /* BMIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351AB1EE206F600EBEB02 /* BMIViewController.m */; };
 		D7B351B01EE20B1500EBEB02 /* UIView+DCAnimationKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351AF1EE20B1500EBEB02 /* UIView+DCAnimationKit.m */; };
+		D7B351B41EE245E800EBEB02 /* StandardBMIVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351B31EE245E800EBEB02 /* StandardBMIVC.m */; };
+		D7B351B71EE2460D00EBEB02 /* MetricBMIVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351B61EE2460D00EBEB02 /* MetricBMIVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,10 @@
 		D7B351AB1EE206F600EBEB02 /* BMIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BMIViewController.m; path = ViewControllers/BMIViewController.m; sourceTree = "<group>"; };
 		D7B351AE1EE20B1500EBEB02 /* UIView+DCAnimationKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+DCAnimationKit.h"; path = "Libraries/UIView+DCAnimationKit.h"; sourceTree = "<group>"; };
 		D7B351AF1EE20B1500EBEB02 /* UIView+DCAnimationKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+DCAnimationKit.m"; path = "Libraries/UIView+DCAnimationKit.m"; sourceTree = "<group>"; };
+		D7B351B21EE245E800EBEB02 /* StandardBMIVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StandardBMIVC.h; path = ViewControllers/BMICalculatorSubVCs/StandardBMIVC.h; sourceTree = "<group>"; };
+		D7B351B31EE245E800EBEB02 /* StandardBMIVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StandardBMIVC.m; path = ViewControllers/BMICalculatorSubVCs/StandardBMIVC.m; sourceTree = "<group>"; };
+		D7B351B51EE2460D00EBEB02 /* MetricBMIVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricBMIVC.h; path = ViewControllers/BMICalculatorSubVCs/MetricBMIVC.h; sourceTree = "<group>"; };
+		D7B351B61EE2460D00EBEB02 /* MetricBMIVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetricBMIVC.m; path = ViewControllers/BMICalculatorSubVCs/MetricBMIVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 		D7B351801EE1C33D00EBEB02 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7B351B11EE245A000EBEB02 /* BMICalculatorSubVCs */,
 				D7B351811EE1C34B00EBEB02 /* LoginViewController.h */,
 				D7B351821EE1C34B00EBEB02 /* LoginViewController.m */,
 				D7B351831EE1C34B00EBEB02 /* SignupViewController.h */,
@@ -183,6 +190,17 @@
 				D7B351AF1EE20B1500EBEB02 /* UIView+DCAnimationKit.m */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		D7B351B11EE245A000EBEB02 /* BMICalculatorSubVCs */ = {
+			isa = PBXGroup;
+			children = (
+				D7B351B21EE245E800EBEB02 /* StandardBMIVC.h */,
+				D7B351B31EE245E800EBEB02 /* StandardBMIVC.m */,
+				D7B351B51EE2460D00EBEB02 /* MetricBMIVC.h */,
+				D7B351B61EE2460D00EBEB02 /* MetricBMIVC.m */,
+			);
+			name = BMICalculatorSubVCs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,8 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B351B41EE245E800EBEB02 /* StandardBMIVC.m in Sources */,
 				D7B351881EE1C34B00EBEB02 /* SignupViewController.m in Sources */,
 				D7B351A91EE2068700EBEB02 /* ProgressViewController.m in Sources */,
+				D7B351B71EE2460D00EBEB02 /* MetricBMIVC.m in Sources */,
 				D7B351B01EE20B1500EBEB02 /* UIView+DCAnimationKit.m in Sources */,
 				D7B351891EE1C34B00EBEB02 /* SplashViewController.m in Sources */,
 				D7B351AC1EE206F600EBEB02 /* BMIViewController.m in Sources */,
