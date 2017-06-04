@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.lblName.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"name"];
+    
     self.btnExercises.layer.borderColor = [UIColor whiteColor].CGColor;
     self.btnExercises.layer.borderWidth = 1;
     self.btnExercises.layer.cornerRadius = 10;
