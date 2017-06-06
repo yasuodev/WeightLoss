@@ -4,6 +4,7 @@
 #import "LoginViewController.h"
 #import "SplashViewController.h"
 #import "MainViewController.h"
+#import "MBProgressHUD.h"
 
 
 @interface SignupViewController ()
@@ -14,18 +15,21 @@
 @end
 
 @implementation SignupViewController
+@synthesize ref;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self initView];
     
-    selectedTextField = self.txtUserID;
+    selectedTextField = self.txtEmail;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyShown:)
                                                  name:UIKeyboardDidShowNotification
                                                object:nil];
     activateTouchID = NO;
+    
+    ref = [[FIRDatabase database] reference];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,19 +43,19 @@
     [self.lblTitle setFont:[UIFont systemFontOfSize:24 * screenSize.height / 667.0f weight:0.2f]];
     
     // textfield placeholder
-    NSDictionary * attributes = (NSMutableDictionary *)[ (NSAttributedString *)self.self.txtUserID.attributedPlaceholder attributesAtIndex:0 effectiveRange:NULL];
+    NSDictionary * attributes = (NSMutableDictionary *)[ (NSAttributedString *)self.self.txtEmail.attributedPlaceholder attributesAtIndex:0 effectiveRange:NULL];
     NSMutableDictionary * newAttributes = [[NSMutableDictionary alloc] initWithDictionary:attributes];
     [newAttributes setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     
     // Set new text with extracted attributes
-    self.txtUserID.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[self.txtUserID.attributedPlaceholder string] attributes:newAttributes];
+    self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[self.txtEmail.attributedPlaceholder string] attributes:newAttributes];
     self.txtName.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[self.txtName.attributedPlaceholder string] attributes:newAttributes];
     self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[self.txtPassword.attributedPlaceholder string] attributes:newAttributes];
     self.txtConfirmPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[self.txtConfirmPassword.attributedPlaceholder string] attributes:newAttributes];
     
-    self.viewUserID.layer.borderWidth = 1.0f;
-    self.viewUserID.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.viewUserID.layer.cornerRadius = 5.0f;
+    self.viewEmail.layer.borderWidth = 1.0f;
+    self.viewEmail.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.viewEmail.layer.cornerRadius = 5.0f;
     
     self.viewName.layer.borderWidth = 1.0f;
     self.viewName.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -85,12 +89,12 @@
 #pragma mark - Sign Up
 -(void)signUp
 {
-    NSString *strUserID = self.txtUserID.text;
+    NSString *strEmail = self.txtEmail.text;
     NSString *strName = self.txtName.text;
     NSString *strPassword = self.txtPassword.text;
     NSString *strConfirmPassword = self.txtConfirmPassword.text;
     
-    if ([strUserID isEqual:@""] || [strName isEqual:@""] || [strPassword isEqual:@""]) {
+    if ([strEmail isEqual:@""] || [strName isEqual:@""] || [strPassword isEqual:@""]) {
         [self showDefaultAlert:@"" withMessage:@"Please input all fields."];
         return;
     }
@@ -100,20 +104,27 @@
         return;
     }
     
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    [userdefaults setObject:strUserID forKey:@"userid"];
-    [userdefaults setObject:strName forKey:@"name"];
-    [userdefaults setObject:strPassword forKey:@"password"];
+    if (![self validateEmail:strEmail]) {
+        [self showDefaultAlert:nil withMessage:@"Invalid Email"];
+        return;
+    }
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%@ is registerd successfully!", strName] preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[FIRAuth auth] createUserWithEmail:strEmail password:strPassword completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if (error) {
+            [self showDefaultAlert:nil withMessage:@"Register Failed!"];
+            return;
+        }
+        
+        ref = [[FIRDatabase database] reference];
+        [[[ref child:@"users"] child:user.uid] setValue:@{@"username": strName}];
+        
         MainViewController *mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
         [self.navigationController pushViewController:mainVC animated:YES];
+        
     }];
-    
-    [alertController addAction:okAction];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
     
 }
 
@@ -127,7 +138,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == self.txtUserID) {
+    if (textField == self.txtEmail) {
         [self.txtName becomeFirstResponder];
     } else if (textField == self.txtName) {
         [self.txtPassword becomeFirstResponder];

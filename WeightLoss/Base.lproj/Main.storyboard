@@ -325,10 +325,10 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2R-la-v3A" userLabel="UserID View">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2R-la-v3A" userLabel="Email View">
                                                         <rect key="frame" x="44" y="270" width="287" height="36"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User ID" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="giF-qJ-DwW">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="giF-qJ-DwW">
                                                                 <rect key="frame" x="8" y="0.0" width="271" height="36"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -472,10 +472,10 @@
                         <outlet property="btnLogin" destination="PHn-sG-OMC" id="Khy-6M-YEe"/>
                         <outlet property="lblTitle" destination="oWW-2c-sgw" id="KfA-n0-GFi"/>
                         <outlet property="scrollView" destination="LSV-p9-ceD" id="DIG-9b-nKt"/>
+                        <outlet property="txtEmail" destination="giF-qJ-DwW" id="hN1-D9-7Un"/>
                         <outlet property="txtPassword" destination="rcb-Np-iYP" id="9fo-MW-ZoV"/>
-                        <outlet property="txtUserID" destination="giF-qJ-DwW" id="Se3-C4-eQJ"/>
+                        <outlet property="viewEmail" destination="a2R-la-v3A" id="DWA-GG-ICs"/>
                         <outlet property="viewPassword" destination="lSz-Fy-VNW" id="OR9-8Y-fDZ"/>
-                        <outlet property="viewUserID" destination="a2R-la-v3A" id="2dM-uK-C1v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vap-Mo-OtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -518,10 +518,10 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Na-iY-jK1" userLabel="UserID View">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Na-iY-jK1" userLabel="Email View">
                                                         <rect key="frame" x="44" y="220" width="287" height="36"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User ID" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="chc-WB-mMX">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="chc-WB-mMX">
                                                                 <rect key="frame" x="8" y="0.0" width="271" height="36"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -710,13 +710,13 @@
                         <outlet property="lblTitle" destination="ZHH-sf-qB6" id="fHc-BC-j9J"/>
                         <outlet property="scrollView" destination="dzo-MU-EAk" id="pOb-qw-ymb"/>
                         <outlet property="txtConfirmPassword" destination="B74-dQ-ERt" id="egP-RS-KdJ"/>
+                        <outlet property="txtEmail" destination="chc-WB-mMX" id="1M3-Rs-Gzb"/>
                         <outlet property="txtName" destination="P2N-eS-AAE" id="CAA-hz-XCd"/>
                         <outlet property="txtPassword" destination="cQb-3K-CBu" id="G9n-ti-mZO"/>
-                        <outlet property="txtUserID" destination="chc-WB-mMX" id="ibf-WP-qnd"/>
                         <outlet property="viewConfirmPassword" destination="Nmw-hY-UJB" id="KdB-dB-62U"/>
+                        <outlet property="viewEmail" destination="4Na-iY-jK1" id="9vI-D1-XZD"/>
                         <outlet property="viewName" destination="YFg-Dg-U3n" id="Dcj-xE-9hD"/>
                         <outlet property="viewPassword" destination="zpb-TP-y4T" id="bLO-IW-fZm"/>
-                        <outlet property="viewUserID" destination="4Na-iY-jK1" id="jod-DS-GbD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mOg-yj-RnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -729,7 +729,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7W0-ki-UIM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fvy-CJ-MTh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fvy-CJ-MTh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -973,7 +973,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w50-bz-vQg">
-                                <rect key="frame" x="147.5" y="37" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="37.5" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="6EY-vt-RTF"/>
                                 </constraints>
@@ -985,7 +985,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sru-yU-e0T">
-                                <rect key="frame" x="147.5" y="90.5" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="91" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -994,13 +994,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="centimeters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paC-tX-t4H">
-                                <rect key="frame" x="259.5" y="42.5" width="81.5" height="19.5"/>
+                                <rect key="frame" x="259.5" y="43" width="81.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kilograms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejc-Pf-VbM">
-                                <rect key="frame" x="260" y="96" width="66.5" height="19.5"/>
+                                <rect key="frame" x="260" y="96.5" width="66.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1012,13 +1012,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2o-qr-fPD">
-                                <rect key="frame" x="148" y="164" width="100" height="30"/>
+                                <rect key="frame" x="148" y="164.5" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnderWeight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAa-Gg-178">
-                                <rect key="frame" x="150" y="135" width="96" height="20.5"/>
+                                <rect key="frame" x="150.5" y="135.5" width="96" height="20.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.56078431370000004" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1072,19 +1072,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Height:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wol-Zb-nC5">
-                                <rect key="frame" x="30" y="40" width="93.5" height="20"/>
+                                <rect key="frame" x="30" y="40" width="101.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayC-v2-yW4">
-                                <rect key="frame" x="30" y="123.5" width="96" height="20"/>
+                                <rect key="frame" x="30" y="125.5" width="104.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CH0-28-m1T">
-                                <rect key="frame" x="139.5" y="35.5" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="37.5" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="chm-Kj-0Ui"/>
                                 </constraints>
@@ -1096,7 +1096,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ylQ-02-OnO">
-                                <rect key="frame" x="139.5" y="77.5" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="79.5" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -1105,25 +1105,25 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="feet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmI-eY-eFq">
-                                <rect key="frame" x="251.5" y="43" width="24" height="16.5"/>
+                                <rect key="frame" x="259.5" y="43.5" width="27" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o03-ow-LV0">
-                                <rect key="frame" x="251.5" y="84" width="41" height="16.5"/>
+                                <rect key="frame" x="259.5" y="84.5" width="43.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6F-81-MVP">
-                                <rect key="frame" x="252" y="125" width="47.5" height="16.5"/>
+                                <rect key="frame" x="260" y="127" width="51" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agA-Cu-jGI">
-                                <rect key="frame" x="139.5" y="118.5" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="122" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -1132,19 +1132,19 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your BMI:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdx-px-KSy">
-                                <rect key="frame" x="30" y="198.5" width="74.5" height="20"/>
+                                <rect key="frame" x="30" y="202" width="79" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3yO-hZ-ait">
-                                <rect key="frame" x="139.5" y="193" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="198.5" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnderWeight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDh-q1-uTY">
-                                <rect key="frame" x="146.5" y="167" width="87.5" height="17.5"/>
+                                <rect key="frame" x="150.5" y="169.5" width="96" height="20.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.56078431370000004" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1199,7 +1199,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Xcw-D8-5kS"/>
         <segue reference="FvO-qQ-7Kp"/>
+        <segue reference="oSB-dR-VkA"/>
         <segue reference="Gwa-zo-Q4q"/>
-        <segue reference="n6B-5G-Sxj"/>
     </inferredMetricsTieBreakers>
 </document>

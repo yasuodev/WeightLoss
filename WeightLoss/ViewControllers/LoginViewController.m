@@ -1,6 +1,10 @@
 #import "LoginViewController.h"
 #import "MainViewController.h"
 
+#import "MBProgressHUD.h"
+
+@import Firebase;
+
 @interface LoginViewController ()
 {
     UITextField *selectedTextField;
@@ -8,7 +12,7 @@
 @end
 
 @implementation LoginViewController
-@synthesize openUrlID;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -17,7 +21,7 @@
     
     [self initView];
     
-    selectedTextField = self.txtUserID;
+    selectedTextField = self.txtEmail;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyShown:) name:UIKeyboardDidShowNotification object:nil];
     
     
@@ -32,9 +36,8 @@
 {
     [super viewWillAppear:animated];
     
-    self.txtUserID.text = @"";
+    self.txtEmail.text = @"";
     self.txtPassword.text = @"";
-    
     
 }
 
@@ -45,7 +48,7 @@
     [self.lblTitle setFont:[UIFont systemFontOfSize:24 * screenSize.height / 667.0f weight:0.2f]];
     
     // white placeholder
-    NSDictionary * attributes = (NSMutableDictionary *)[ (NSAttributedString *)self.txtUserID.attributedPlaceholder attributesAtIndex:0 effectiveRange:NULL];
+    NSDictionary * attributes = (NSMutableDictionary *)[ (NSAttributedString *)self.txtEmail.attributedPlaceholder attributesAtIndex:0 effectiveRange:NULL];
 
     NSMutableDictionary * newAttributes = [[NSMutableDictionary alloc] initWithDictionary:attributes];
     
@@ -53,12 +56,12 @@
     
     
     // Set new text with extracted attributes
-    self.txtUserID.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[self.txtUserID.attributedPlaceholder string] attributes:newAttributes];
+    self.txtEmail.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[self.txtEmail.attributedPlaceholder string] attributes:newAttributes];
     self.txtPassword.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[self.txtPassword.attributedPlaceholder string] attributes:newAttributes];
     
-    self.viewUserID.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.viewUserID.layer.borderWidth = 1.0;
-    self.viewUserID.layer.cornerRadius = 5.0f;
+    self.viewEmail.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.viewEmail.layer.borderWidth = 1.0;
+    self.viewEmail.layer.cornerRadius = 5.0f;
     
     self.viewPassword.layer.borderColor = [UIColor whiteColor].CGColor;
     self.viewPassword.layer.borderWidth = 1.0;
@@ -79,11 +82,11 @@
 
 - (IBAction)onLogin:(id)sender {
     
-    NSString *strUserID = self.txtUserID.text;
+    NSString *strEmail = self.txtEmail.text;
     NSString *strPassword = self.txtPassword.text;
     
-    if ([strUserID isEqual:@""]) {
-        [self showDefaultAlert:nil withMessage:@"Empty UserID"];
+    if ([strEmail isEqual:@""]) {
+        [self showDefaultAlert:nil withMessage:@"Empty Email"];
         return;
     }
     if ([strPassword isEqual:@""]) {
@@ -91,22 +94,44 @@
         return;
     }
     
-    [self login:strUserID password:strPassword];
+    [self login:strEmail password:strPassword];
 }
 
 
-#pragma mark - login with email and password
--(void) login:(NSString*)userid password:(NSString*)password
+-(void) login:(NSString*)email password:(NSString*)password
 {
-    NSString *savedUserID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userid"];
-    NSString *savedPass = [[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
-    
-    if ([userid isEqual:savedUserID] && [password isEqual:savedPass]) {
-        MainViewController *mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-        [self.navigationController pushViewController:mainVC animated:YES];
+    if ([self validateEmail:email]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+       
+        [[FIRAuth auth] signInWithEmail:email password:password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+            
+           [MBProgressHUD hideHUDForView:self.view animated:YES];
+           
+            if (error) {
+                [self showDefaultAlert:nil withMessage:@"Login Failed"];
+                return;
+            }
+            MainViewController *mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            [self.navigationController pushViewController:mainVC animated:YES];
+        }];
+        
     } else {
-        [self showDefaultAlert:nil withMessage:@"Login Failed"];
+        [self showDefaultAlert:nil withMessage:@"Invalid Email"];
     }
+    
+}
+
+#pragma mark - email validator
+-(BOOL) validateEmail:(NSString*)email
+{
+    if ([[email stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0) {
+        return YES;
+    }
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    
+    return [emailTest evaluateWithObject:email];
 }
 
 
@@ -119,7 +144,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == self.txtUserID) {
+    if (textField == self.txtEmail) {
         [self.txtPassword becomeFirstResponder];
     } else {
         [textField resignFirstResponder];

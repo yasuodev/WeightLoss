@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1672789C19A26D4D4F2166 /* libPods-WeightLoss.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 092101AB12FB3D249CA40444 /* libPods-WeightLoss.a */; };
 		D769BDBE1EE16DDF002A0252 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D769BDBD1EE16DDF002A0252 /* main.m */; };
 		D769BDC11EE16DDF002A0252 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D769BDC01EE16DDF002A0252 /* AppDelegate.m */; };
 		D769BDC71EE16DDF002A0252 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D769BDC51EE16DDF002A0252 /* Main.storyboard */; };
@@ -35,9 +36,12 @@
 		D7B351B01EE20B1500EBEB02 /* UIView+DCAnimationKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351AF1EE20B1500EBEB02 /* UIView+DCAnimationKit.m */; };
 		D7B351B41EE245E800EBEB02 /* StandardBMIVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351B31EE245E800EBEB02 /* StandardBMIVC.m */; };
 		D7B351B71EE2460D00EBEB02 /* MetricBMIVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7B351B61EE2460D00EBEB02 /* MetricBMIVC.m */; };
+		D7B351B91EE49FFD00EBEB02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7B351B81EE49FFD00EBEB02 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		092101AB12FB3D249CA40444 /* libPods-WeightLoss.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeightLoss.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F4B9E260B11E589C77672F /* Pods-WeightLoss.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeightLoss.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeightLoss/Pods-WeightLoss.debug.xcconfig"; sourceTree = "<group>"; };
 		D769BDB91EE16DDF002A0252 /* WeightLoss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeightLoss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D769BDBD1EE16DDF002A0252 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D769BDBF1EE16DDF002A0252 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 		D7B351B31EE245E800EBEB02 /* StandardBMIVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StandardBMIVC.m; path = ViewControllers/BMICalculatorSubVCs/StandardBMIVC.m; sourceTree = "<group>"; };
 		D7B351B51EE2460D00EBEB02 /* MetricBMIVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MetricBMIVC.h; path = ViewControllers/BMICalculatorSubVCs/MetricBMIVC.h; sourceTree = "<group>"; };
 		D7B351B61EE2460D00EBEB02 /* MetricBMIVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MetricBMIVC.m; path = ViewControllers/BMICalculatorSubVCs/MetricBMIVC.m; sourceTree = "<group>"; };
+		D7B351B81EE49FFD00EBEB02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EB0B424E4FBE34598929528D /* Pods-WeightLoss.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeightLoss.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeightLoss/Pods-WeightLoss.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,17 +92,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1672789C19A26D4D4F2166 /* libPods-WeightLoss.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		250E3E3FB761271CE750E7D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				092101AB12FB3D249CA40444 /* libPods-WeightLoss.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A40719093CDA26E401E31832 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				79F4B9E260B11E589C77672F /* Pods-WeightLoss.debug.xcconfig */,
+				EB0B424E4FBE34598929528D /* Pods-WeightLoss.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D769BDB01EE16DDE002A0252 = {
 			isa = PBXGroup;
 			children = (
 				D769BDBB1EE16DDF002A0252 /* WeightLoss */,
 				D769BDBA1EE16DDF002A0252 /* Products */,
+				A40719093CDA26E401E31832 /* Pods */,
+				250E3E3FB761271CE750E7D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +137,7 @@
 		D769BDBB1EE16DDF002A0252 /* WeightLoss */ = {
 			isa = PBXGroup;
 			children = (
+				D7B351B81EE49FFD00EBEB02 /* GoogleService-Info.plist */,
 				D7B351AD1EE20B0400EBEB02 /* Libraries */,
 				D7B3518F1EE1F94C00EBEB02 /* fonts */,
 				D7B351801EE1C33D00EBEB02 /* ViewControllers */,
@@ -210,9 +237,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D769BDD31EE16DDF002A0252 /* Build configuration list for PBXNativeTarget "WeightLoss" */;
 			buildPhases = (
+				C3D1BB374A93758CF469C4AF /* [CP] Check Pods Manifest.lock */,
 				D769BDB51EE16DDE002A0252 /* Sources */,
 				D769BDB61EE16DDE002A0252 /* Frameworks */,
 				D769BDB71EE16DDE002A0252 /* Resources */,
+				E408FAA8F34CA81BC5DEA99D /* [CP] Embed Pods Frameworks */,
+				186F9908E052D9F134ADE60B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -270,6 +300,7 @@
 				D7B3519A1EE1F96800EBEB02 /* OpenSans-Bold.ttf in Resources */,
 				D7B3519C1EE1F96800EBEB02 /* OpenSans-ExtraBold.ttf in Resources */,
 				D7B3519B1EE1F96800EBEB02 /* OpenSans-BoldItalic.ttf in Resources */,
+				D7B351B91EE49FFD00EBEB02 /* GoogleService-Info.plist in Resources */,
 				D769BDCC1EE16DDF002A0252 /* Assets.xcassets in Resources */,
 				D7B3518B1EE1C78000EBEB02 /* backIcon.png in Resources */,
 				D7B3519F1EE1F96800EBEB02 /* OpenSans-Light.ttf in Resources */,
@@ -280,6 +311,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		186F9908E052D9F134ADE60B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeightLoss/Pods-WeightLoss-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3D1BB374A93758CF469C4AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E408FAA8F34CA81BC5DEA99D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeightLoss/Pods-WeightLoss-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D769BDB51EE16DDE002A0252 /* Sources */ = {
@@ -416,22 +495,24 @@
 		};
 		D769BDD41EE16DDF002A0252 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79F4B9E260B11E589C77672F /* Pods-WeightLoss.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WeightLoss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dev.WeightLoss;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weight.loss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		D769BDD51EE16DDF002A0252 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB0B424E4FBE34598929528D /* Pods-WeightLoss.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WeightLoss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dev.WeightLoss;
+				PRODUCT_BUNDLE_IDENTIFIER = com.weight.loss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

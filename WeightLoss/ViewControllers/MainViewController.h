@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@import Firebase;
 
 @interface MainViewController : UIViewController
+
+@property (nonatomic, strong) FIRDatabaseReference *ref;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 
