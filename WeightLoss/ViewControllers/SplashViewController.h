@@ -13,7 +13,4 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSignUp;
 
 
-- (IBAction)onForgotPassword:(id)sender;
-
-
 @end

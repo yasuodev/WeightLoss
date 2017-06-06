@@ -46,28 +46,6 @@
 }
 
 
-- (IBAction)onForgotPassword:(id)sender {
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Forgot Password?" message:@"Please enter your User ID address to recover password." preferredStyle:UIAlertControllerStyleAlert];
-    
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//        textField.placeholder = @"example@email.com";
-    }];
-    
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-        NSArray * textfields = alertController.textFields;
-        UITextField * useridField = textfields[0];
-        //[self forgotPasswordMethod:emailField.text];
-        
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-    
-}
-
-
 #pragma mark - show default alert
 
 -(void) showDefaultAlert:(NSString*)title withMessage:(NSString*)message

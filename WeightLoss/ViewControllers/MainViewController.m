@@ -51,7 +51,29 @@
 
 
 - (IBAction)onBack:(id)sender {
+    NSError *signOutError;
+    BOOL status = [[FIRAuth auth] signOut:&signOutError];
+    if (!status) {
+        
+        [self showDefaultAlert:nil withMessage:@"Error Signing out"];
+        NSLog(@"Error signing out: %@", signOutError);
+        return;
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
-    [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+#pragma mark - show default alert
+
+-(void) showDefaultAlert:(NSString*)title withMessage:(NSString*)message
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
 @end
