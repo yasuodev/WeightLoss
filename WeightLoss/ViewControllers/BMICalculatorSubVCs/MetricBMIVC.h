@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@import Firebase;
+
 
 @interface MetricBMIVC : UIViewController <UITextFieldDelegate>
+
+@property (nonatomic, strong) FIRDatabaseReference *ref;
 
 @property (weak, nonatomic) IBOutlet UITextField *txtHeight;
 @property (weak, nonatomic) IBOutlet UITextField *txtWeight;

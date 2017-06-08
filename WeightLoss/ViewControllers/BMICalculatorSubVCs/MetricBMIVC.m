@@ -13,6 +13,8 @@
 @end
 
 @implementation MetricBMIVC
+@synthesize ref;
+
 @synthesize txtHeight;
 @synthesize txtWeight;
 @synthesize txtBMI;
@@ -105,8 +107,80 @@
 
 -(void) saveData
 {
+    float height =0, weight = 0;
     
+    if ([self isNumeric:txtHeight.text]) {
+        height = [txtHeight.text floatValue] * 0.01f;
+    }
+    
+    if ([self isNumeric:txtWeight.text]) {
+        weight = [txtWeight.text floatValue];
+    }
+    
+    if (height == 0) {
+        txtBMI.text = @"Height?";
+    } else {
+        float bmi = weight / (height * height);
+        
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        df.dateFormat = @"MM/dd/yyyy";
+        
+        NSDate *today = [NSDate date];
+        NSString *strDate = [df stringFromDate:today];
+        
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setValue:strDate forKey:@"date"];
+        [dic setValue:[NSNumber numberWithFloat:weight] forKey:@"weight"];
+        [dic setValue:[NSNumber numberWithFloat:height] forKey:@"height"];
+        [dic setValue:[NSNumber numberWithFloat:bmi] forKey:@"bmi"];
+        
+        
+        FIRUser *user = [[FIRAuth auth] currentUser];
+        
+        ref = [[[FIRDatabase database] reference] child:[NSString stringWithFormat:@"users/%@", user.uid]];
+        
+        
+        [[ref child:@"data"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+            if (snapshot.value == [NSNull null]) {
+                NSLog(@"No data");
+                [ref updateChildValues:@{@"data" : @[dic]}];
+                
+            } else {
+                
+                NSMutableArray *arrData = snapshot.value;
+                
+                BOOL isUpdated = NO;
+                for (NSDictionary *dicData in arrData) {
+                    if ([[dicData valueForKey:@"date"] isEqual:strDate]) {
+                        [arrData replaceObjectAtIndex:[arrData indexOfObject:dicData] withObject:dic];
+                        isUpdated = YES;
+                        break;
+                    }
+                }
+                
+                if (!isUpdated) {
+                    [arrData addObject:dic];
+                }
+                
+                [ref updateChildValues:@{@"data" : arrData}];
+                
+            }
+            
+            [self showDefaultAlert:nil withMessage:@"Your data is saved!"];
+            
+        }];
+        
+        
+    }
 }
 
+#pragma mark - show default alert
+-(void) showDefaultAlert:(NSString*)title withMessage:(NSString*)message
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 @end
