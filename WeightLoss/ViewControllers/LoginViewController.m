@@ -1,5 +1,6 @@
 #import "LoginViewController.h"
 #import "MainViewController.h"
+#import "SignupViewController.h"
 
 #import "MBProgressHUD.h"
 
@@ -24,7 +25,6 @@
     selectedTextField = self.txtEmail;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyShown:) name:UIKeyboardDidShowNotification object:nil];
     
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,6 +39,9 @@
     self.txtEmail.text = @"";
     self.txtPassword.text = @"";
     
+    if (self.fromSignup) {
+        [self.btnGotoSignup setHidden:YES];
+    }
 }
 
 -(void) initView {
@@ -72,6 +75,14 @@
     self.btnLogin.layer.cornerRadius = 5.0f;
     
     
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqual:@"GotoSignupSegue"]) {
+        SignupViewController *vc = [segue destinationViewController];
+        vc.fromLogin = YES;
+    }
 }
 
 #pragma mark - button events

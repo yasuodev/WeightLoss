@@ -102,4 +102,11 @@
     [self calculate];
 }
 
+
+-(void) saveData
+{
+    
+}
+
+
 @end

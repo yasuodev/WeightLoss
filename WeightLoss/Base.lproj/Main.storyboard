@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7W0-ki-UIM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7W0-ki-UIM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -420,7 +420,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="RAy-0t-Vhg" kind="show" id="oSB-dR-VkA">
+                                            <segue destination="RAy-0t-Vhg" kind="show" identifier="GotoSignupSegue" id="oSB-dR-VkA">
                                                 <nil key="action"/>
                                             </segue>
                                         </connections>
@@ -457,6 +457,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnGotoSignup" destination="tyS-8x-sWX" id="5b3-7B-t9s"/>
                         <outlet property="btnLogin" destination="PHn-sG-OMC" id="Khy-6M-YEe"/>
                         <outlet property="lblTitle" destination="oWW-2c-sgw" id="KfA-n0-GFi"/>
                         <outlet property="scrollView" destination="LSV-p9-ceD" id="DIG-9b-nKt"/>
@@ -657,7 +658,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Bse-ob-dTl" kind="show" id="Gwa-zo-Q4q">
+                                            <segue destination="Bse-ob-dTl" kind="show" identifier="GotoLoginSegue" id="Gwa-zo-Q4q">
                                                 <nil key="action"/>
                                             </segue>
                                         </connections>
@@ -694,6 +695,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnGotoLogin" destination="xOh-0n-JBw" id="RRm-RJ-2EA"/>
                         <outlet property="btnSignup" destination="HV5-is-G3L" id="cV2-Y7-5dL"/>
                         <outlet property="lblTitle" destination="ZHH-sf-qB6" id="fHc-BC-j9J"/>
                         <outlet property="scrollView" destination="dzo-MU-EAk" id="pOb-qw-ymb"/>
@@ -717,7 +719,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="7W0-ki-UIM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fvy-CJ-MTh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fvy-CJ-MTh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -828,14 +830,26 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lW-Jc-6Eu">
+                                        <rect key="frame" x="318" y="32" width="45" height="40"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onSave:" destination="sMU-ul-0j7" eventType="touchUpInside" id="FzH-zy-aNG"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.50980392159999999" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="6lW-Jc-6Eu" firstAttribute="centerY" secondItem="eET-o9-7av" secondAttribute="centerY" id="0Qf-BO-If3"/>
                                     <constraint firstItem="eET-o9-7av" firstAttribute="centerX" secondItem="ipY-yV-O0k" secondAttribute="centerX" id="6km-fV-eob"/>
                                     <constraint firstItem="afF-0V-Mdb" firstAttribute="width" secondItem="ipY-yV-O0k" secondAttribute="width" multiplier="30:375" id="HPp-yg-zhv"/>
                                     <constraint firstItem="afF-0V-Mdb" firstAttribute="centerY" secondItem="eET-o9-7av" secondAttribute="centerY" id="eW1-RI-Cqg"/>
                                     <constraint firstItem="afF-0V-Mdb" firstAttribute="leading" secondItem="ipY-yV-O0k" secondAttribute="trailing" multiplier="22:375" id="hGT-0d-Zmb"/>
                                     <constraint firstAttribute="bottom" secondItem="eET-o9-7av" secondAttribute="bottom" constant="16" id="nwR-FG-w5V"/>
+                                    <constraint firstAttribute="trailing" secondItem="6lW-Jc-6Eu" secondAttribute="trailing" constant="12" id="wSO-e5-fim"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J68-wK-Tte" userLabel="Menu View">
@@ -925,6 +939,7 @@
                     </view>
                     <connections>
                         <outlet property="btnMetric" destination="l7h-2K-yTr" id="wRM-rp-Z9Q"/>
+                        <outlet property="btnSave" destination="6lW-Jc-6Eu" id="Zo8-JQ-2Az"/>
                         <outlet property="btnStandard" destination="Lwp-FL-gxT" id="a1o-8t-gsL"/>
                         <outlet property="metricSubView" destination="wDc-gr-pSS" id="eGE-FO-vn6"/>
                         <outlet property="standardSubView" destination="7dQ-5e-EfR" id="PSh-8Y-0CH"/>
@@ -961,7 +976,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w50-bz-vQg">
-                                <rect key="frame" x="147.5" y="37" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="37.5" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="6EY-vt-RTF"/>
                                 </constraints>
@@ -973,7 +988,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sru-yU-e0T">
-                                <rect key="frame" x="147.5" y="90.5" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="91" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -982,13 +997,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="centimeters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paC-tX-t4H">
-                                <rect key="frame" x="259.5" y="42.5" width="81.5" height="19.5"/>
+                                <rect key="frame" x="259.5" y="43" width="81.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kilograms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejc-Pf-VbM">
-                                <rect key="frame" x="260" y="96" width="66.5" height="19.5"/>
+                                <rect key="frame" x="260" y="96.5" width="66.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1000,13 +1015,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2o-qr-fPD">
-                                <rect key="frame" x="148" y="164" width="100" height="30"/>
+                                <rect key="frame" x="148" y="164.5" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnderWeight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAa-Gg-178">
-                                <rect key="frame" x="151" y="135" width="96" height="20.5"/>
+                                <rect key="frame" x="150.5" y="135.5" width="96" height="20.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.56078431370000004" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1066,13 +1081,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayC-v2-yW4">
-                                <rect key="frame" x="30" y="125" width="104.5" height="23.5"/>
+                                <rect key="frame" x="30" y="125.5" width="104.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CH0-28-m1T">
-                                <rect key="frame" x="147.5" y="37" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="37.5" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="chm-Kj-0Ui"/>
                                 </constraints>
@@ -1084,7 +1099,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ylQ-02-OnO">
-                                <rect key="frame" x="147.5" y="79" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="79.5" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -1093,25 +1108,25 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="feet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmI-eY-eFq">
-                                <rect key="frame" x="259.5" y="43" width="27" height="19.5"/>
+                                <rect key="frame" x="259.5" y="43.5" width="27" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o03-ow-LV0">
-                                <rect key="frame" x="259.5" y="84" width="43.5" height="19.5"/>
+                                <rect key="frame" x="259.5" y="84.5" width="43.5" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6F-81-MVP">
-                                <rect key="frame" x="260" y="126" width="51" height="19.5"/>
+                                <rect key="frame" x="260" y="127" width="51" height="19.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="agA-Cu-jGI">
-                                <rect key="frame" x="147.5" y="121" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="122" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -1120,19 +1135,19 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your BMI:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdx-px-KSy">
-                                <rect key="frame" x="30" y="201" width="79" height="23.5"/>
+                                <rect key="frame" x="30" y="202" width="79" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3yO-hZ-ait">
-                                <rect key="frame" x="147.5" y="198" width="100" height="30"/>
+                                <rect key="frame" x="147.5" y="199.5" width="100" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnderWeight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDh-q1-uTY">
-                                <rect key="frame" x="150" y="169" width="96" height="20.5"/>
+                                <rect key="frame" x="149.5" y="170.5" width="96" height="20.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.56078431370000004" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1185,9 +1200,9 @@
         <image name="background.png" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7ah-Ez-3Ot"/>
+        <segue reference="oSB-dR-VkA"/>
+        <segue reference="Gwa-zo-Q4q"/>
         <segue reference="zS7-cc-rRL"/>
-        <segue reference="TYb-6A-aJ9"/>
-        <segue reference="n6B-5G-Sxj"/>
+        <segue reference="7ah-Ez-3Ot"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,6 +36,15 @@
     [super didReceiveMemoryWarning];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.fromLogin) {
+        [self.btnGotoLogin setHidden:YES];
+    }
+}
+
 -(void) initView
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
@@ -75,8 +84,16 @@
     
 }
 
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqual:@"GotoLoginSegue"])
+    {
+        LoginViewController *vc = [segue destinationViewController];
+        vc.fromSignup = YES;
+    }
+}
 
-
+#pragma mark - button events
 - (IBAction)onSignup:(id)sender {
     [self signUp];
 }

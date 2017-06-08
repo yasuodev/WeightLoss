@@ -7,6 +7,8 @@
 
 @interface SignupViewController : UIViewController <UITextFieldDelegate>
 
+@property BOOL fromLogin;
+
 @property (nonatomic, strong) FIRDatabaseReference *ref;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
@@ -24,6 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSignup;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnGotoLogin;
 
 - (IBAction)onSignup:(id)sender;
 - (IBAction)onBack:(id)sender;

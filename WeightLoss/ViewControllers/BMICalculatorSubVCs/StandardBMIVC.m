@@ -113,4 +113,34 @@
     [self calculate];
 }
 
+
+-(void) saveData
+{
+    float feet =0, inches = 0, weight = 0;
+    
+    if ([self isNumeric:txtFeet.text]) {
+        feet = [txtFeet.text floatValue];
+    }
+    
+    if ([self isNumeric:txtInches.text]) {
+        inches = [txtInches.text floatValue];
+    }
+    
+    if ([self isNumeric:txtWeight.text]) {
+        weight = [txtWeight.text floatValue] * 0.453592f;
+    }
+    
+    float height = feet * 0.3048f + inches * 0.0254f;
+    
+    if (height == 0) {
+        txtBMI.text = @"Height?";
+    } else {
+        float bmi = weight / (height * height);
+        txtBMI.text = [NSString stringWithFormat:@"%.4f", bmi];
+        
+        
+    }
+}
+
+
 @end

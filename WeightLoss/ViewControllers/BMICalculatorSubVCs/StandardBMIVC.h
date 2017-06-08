@@ -18,4 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblBMI;
 
+
+-(void) saveData;
+
 @end

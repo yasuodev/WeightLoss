@@ -6,6 +6,8 @@
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 
+@property BOOL fromSignup;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -16,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnLogin;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnGotoSignup;
 
 - (IBAction)onBack:(id)sender;
 - (IBAction)onLogin:(id)sender;

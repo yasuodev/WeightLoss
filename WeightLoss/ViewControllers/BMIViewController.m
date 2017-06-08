@@ -9,8 +9,13 @@
 #import "BMIViewController.h"
 #import "UIView+DCAnimationKit.h"
 
-@interface BMIViewController ()
+#import "StandardBMIVC.h"
+#import "MetricBMIVC.h"
 
+@interface BMIViewController ()
+{
+    BOOL isStandard;
+}
 @end
 
 @implementation BMIViewController
@@ -18,6 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if ([[FIRAuth auth] currentUser]) {
+        [self.btnSave setHidden:NO];
+    } else {
+        [self.btnSave setHidden:YES];
+    }
+    
+    isStandard = YES;
     
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     self.underlineCenterConstraint.constant = -screenSize.width / 4.0f;
@@ -38,7 +51,28 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)onSave:(id)sender {
+    
+    NSArray *arrVCs = [self childViewControllers];
+    for (UIViewController *vc in arrVCs) {
+        if (isStandard) {
+            if ([vc isKindOfClass:StandardBMIVC.class]) {
+                StandardBMIVC *standardBMIVC = (StandardBMIVC*)vc;
+                [standardBMIVC saveData];
+            }
+        } else {
+            if ([vc isKindOfClass:MetricBMIVC.class]) {
+                MetricBMIVC *metricBMIVC = (MetricBMIVC*)vc;
+                [metricBMIVC saveData];
+            }
+        }
+    }
+}
+
 - (IBAction)onStandard:(id)sender {
+    
+    isStandard = YES;
+    
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     
     [UIView animateWithDuration:0.2f animations:^{
@@ -56,6 +90,8 @@
 }
 
 - (IBAction)onMetric:(id)sender {
+    
+    isStandard = NO;
     
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
     

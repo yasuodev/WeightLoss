@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@import Firebase;
+
 @interface BMIViewController : UIViewController
 
-- (IBAction)onBack:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnSave;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnStandard;
 @property (weak, nonatomic) IBOutlet UIButton *btnMetric;
@@ -24,6 +26,8 @@
 
 
 
+- (IBAction)onBack:(id)sender;
+- (IBAction)onSave:(id)sender;
 - (IBAction)onStandard:(id)sender;
 - (IBAction)onMetric:(id)sender;
 

@@ -9,4 +9,5 @@ target 'WeightLoss' do
 pod 'MBProgressHUD', '~> 1.0'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'JBChartView'
 end
