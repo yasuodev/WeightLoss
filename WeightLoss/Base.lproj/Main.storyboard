@@ -170,7 +170,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="N7V-FB-bg5" kind="show" id="St0-kB-2Df"/>
+                                    <action selector="onProgress:" destination="aiP-pz-tFQ" eventType="touchUpInside" id="4nf-cu-iYg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRU-A8-jrz">
@@ -218,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wud-BP-tQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1313" y="8"/>
+            <point key="canvasLocation" x="2215" y="8"/>
         </scene>
         <!--Exercises View Controller-->
         <scene sceneID="hFl-2O-ZzR">
@@ -281,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1F-ei-tkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2097" y="8"/>
+            <point key="canvasLocation" x="3041" y="8"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="P79-8X-2Dc">
@@ -751,7 +751,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKQ-mb-MQP" userLabel="Back Button">
-                                        <rect key="frame" x="22" y="37" width="30" height="30"/>
+                                        <rect key="frame" x="8" y="33" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="qKQ-mb-MQP" secondAttribute="height" multiplier="1:1" id="BQ7-WV-x1W"/>
                                         </constraints>
@@ -762,7 +762,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qo2-60-dRN">
-                                        <rect key="frame" x="145" y="40" width="83.5" height="24"/>
+                                        <rect key="frame" x="145" y="36" width="83.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -770,30 +770,41 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.50980392159999999" green="0.82745098039999998" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="qo2-60-dRN" secondAttribute="bottom" constant="16" id="Fuz-qc-0ra"/>
+                                    <constraint firstItem="qo2-60-dRN" firstAttribute="centerY" secondItem="ceC-a9-fqa" secondAttribute="centerY" multiplier="1.2:1" id="3pu-b2-4XY"/>
                                     <constraint firstItem="qo2-60-dRN" firstAttribute="centerX" secondItem="ceC-a9-fqa" secondAttribute="centerX" id="UHX-ik-dW5"/>
                                     <constraint firstItem="qKQ-mb-MQP" firstAttribute="centerY" secondItem="qo2-60-dRN" secondAttribute="centerY" id="VZs-nb-gbu"/>
                                     <constraint firstItem="qKQ-mb-MQP" firstAttribute="width" secondItem="ceC-a9-fqa" secondAttribute="width" multiplier="30:375" id="jRU-ke-K7C"/>
-                                    <constraint firstItem="qKQ-mb-MQP" firstAttribute="leading" secondItem="ceC-a9-fqa" secondAttribute="trailing" multiplier="22:375" id="xeC-Qh-9EC"/>
+                                    <constraint firstItem="qKQ-mb-MQP" firstAttribute="leading" secondItem="ceC-a9-fqa" secondAttribute="leading" constant="8" id="xeC-Qh-9EC"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="av0-FO-iJp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="TDG-zJ-YpX" secondAttribute="trailing" id="3eh-sq-Yk4"/>
+                            <constraint firstAttribute="trailing" secondItem="av0-FO-iJp" secondAttribute="trailing" id="DJo-kR-agn"/>
+                            <constraint firstItem="av0-FO-iJp" firstAttribute="top" secondItem="APt-Sb-LQh" secondAttribute="top" id="EGh-yL-8Lr"/>
+                            <constraint firstAttribute="bottom" secondItem="av0-FO-iJp" secondAttribute="bottom" id="MR4-bF-fjN"/>
                             <constraint firstItem="TDG-zJ-YpX" firstAttribute="top" secondItem="APt-Sb-LQh" secondAttribute="top" id="OMb-f4-kGw"/>
                             <constraint firstItem="TDG-zJ-YpX" firstAttribute="leading" secondItem="APt-Sb-LQh" secondAttribute="leading" id="OpO-dV-bqc"/>
                             <constraint firstAttribute="trailing" secondItem="ceC-a9-fqa" secondAttribute="trailing" id="iHs-5G-bvu"/>
-                            <constraint firstItem="ceC-a9-fqa" firstAttribute="height" secondItem="APt-Sb-LQh" secondAttribute="height" multiplier="80:667" id="kXP-0G-QY3"/>
+                            <constraint firstItem="av0-FO-iJp" firstAttribute="leading" secondItem="APt-Sb-LQh" secondAttribute="leading" id="jUA-9h-EIJ"/>
+                            <constraint firstItem="ceC-a9-fqa" firstAttribute="height" secondItem="APt-Sb-LQh" secondAttribute="height" multiplier="45:375" id="kXP-0G-QY3"/>
                             <constraint firstItem="ceC-a9-fqa" firstAttribute="leading" secondItem="APt-Sb-LQh" secondAttribute="leading" id="wI8-oq-DNB"/>
                             <constraint firstAttribute="bottom" secondItem="TDG-zJ-YpX" secondAttribute="bottom" id="wXj-gR-979"/>
                             <constraint firstItem="ceC-a9-fqa" firstAttribute="top" secondItem="APt-Sb-LQh" secondAttribute="top" id="ydR-6K-kMv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="graph_bg" destination="av0-FO-iJp" id="h60-J9-X6M"/>
+                        <outlet property="lblTitle" destination="qo2-60-dRN" id="rhZ-tq-euK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwX-OH-O8J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2844" y="8"/>
+            <point key="canvasLocation" x="3798" y="8"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="syt-kK-lQc">
@@ -949,7 +960,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVJ-CA-QYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3625" y="8"/>
+            <point key="canvasLocation" x="1313" y="792"/>
         </scene>
         <!--MetricBMIVC-->
         <scene sceneID="t2H-Hv-XO5">
@@ -1060,7 +1071,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ss-Rf-dN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4378" y="79"/>
+            <point key="canvasLocation" x="2065" y="863"/>
         </scene>
         <!--StandardBMIVC-->
         <scene sceneID="gZD-Iy-qnc">
@@ -1192,7 +1203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8TS-s6-xSl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3625" y="670"/>
+            <point key="canvasLocation" x="1313" y="1454"/>
         </scene>
     </scenes>
     <resources>
@@ -1202,7 +1213,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="oSB-dR-VkA"/>
         <segue reference="Gwa-zo-Q4q"/>
-        <segue reference="zS7-cc-rRL"/>
-        <segue reference="7ah-Ez-3Ot"/>
+        <segue reference="Xcw-D8-5kS"/>
+        <segue reference="FvO-qQ-7Kp"/>
     </inferredMetricsTieBreakers>
 </document>

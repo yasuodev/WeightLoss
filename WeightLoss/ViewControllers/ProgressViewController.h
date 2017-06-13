@@ -7,8 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JBLineChartView.h"
+@import Firebase;
 
-@interface ProgressViewController : UIViewController
+@interface ProgressViewController : UIViewController <JBLineChartViewDelegate, JBLineChartViewDataSource>
+
+@property (nonatomic, strong) FIRDatabaseReference *ref;
+
+@property (nonatomic, strong) NSMutableArray *arrData;
+
+@property (nonatomic, strong) IBOutlet JBLineChartView *lineChartView;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *graph_bg;
 
 - (IBAction)onBack:(id)sender;
+
 @end

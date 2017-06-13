@@ -104,28 +104,20 @@
     }
 }
 
+
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-    if ([self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController *mainNavigationController = (UINavigationController*)self.window.rootViewController;
-        
-        
-        if ( [mainNavigationController.topViewController isKindOfClass:[ProgressViewController class]] )
-        {
-            UIViewController *fullController = mainNavigationController.topViewController;
-            if (fullController.view.tag == 10){
-                //NSLog(@"A1");
-                return UIInterfaceOrientationMaskLandscape;
-                //return UIInterfaceOrientationMaskLandscape;
-            }else{
-                //NSLog(@"A2");
-                return UIInterfaceOrientationMaskPortrait;
-                
-            }
+    
+    if ([self.window.rootViewController.presentedViewController isKindOfClass:[ProgressViewController class]])
+    {
+        ProgressViewController *fullController = (ProgressViewController*)self.window.rootViewController.presentedViewController;
+        if (fullController.view.tag == 10) {
+            return UIInterfaceOrientationMaskLandscape;
         } else {
             return UIInterfaceOrientationMaskPortrait;
         }
-    }
+        
+    }   
     
     return UIInterfaceOrientationMaskPortrait;
 }

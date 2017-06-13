@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnBMI;
 
 - (IBAction)onBack:(id)sender;
+- (IBAction)onProgress:(id)sender;
 
 @end

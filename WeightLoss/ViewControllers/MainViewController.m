@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-
+#import "ProgressViewController.h"
 
 @interface MainViewController ()
 
@@ -62,6 +62,14 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
     
+}
+
+- (IBAction)onProgress:(id)sender {
+    
+    ProgressViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ProgressViewController"];
+    vc.view.tag = 10;
+    
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 
