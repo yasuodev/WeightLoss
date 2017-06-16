@@ -9,7 +9,9 @@
 #import "ProgressViewController.h"
 
 @interface ProgressViewController ()
-
+{
+    UIView *firstDotView;
+}
 @end
 
 @implementation ProgressViewController
@@ -28,6 +30,11 @@
     lineChartView.delegate = self;
     [self.graph_bg addSubview:lineChartView];
     
+    firstDotView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 6, 6)];
+    [firstDotView setBackgroundColor:[UIColor whiteColor]];
+    firstDotView.layer.cornerRadius = 3;
+    [self.view addSubview:firstDotView];
+    [firstDotView setHidden:YES];
     
 }
 
@@ -126,6 +133,21 @@
             [lineChartView setMaximumValue:200];
             
             [self.lineChartView reloadData];
+            
+            if (arrData.count == 1) {
+                NSDictionary *dicData = arrData[0];
+                float yValue = 0;
+                yValue = [[dicData valueForKey:@"weight"] floatValue];
+                
+                float y = lineChartView.frame.size.height * (200-yValue) / 200.0f;
+            
+                [firstDotView setFrame:CGRectMake(10, y-3, 6, 6)];
+                [firstDotView setHidden:NO];
+                
+            }
+            
+            
+            
         }
     }];
     
@@ -166,10 +188,6 @@
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
 {
-    NSInteger maxIndex = 29;
-    if (arrData.count < 30)
-        maxIndex = arrData.count - 1;
-    
     NSDictionary *dicData = arrData[horizontalIndex];
     
     float yValue = 0;
