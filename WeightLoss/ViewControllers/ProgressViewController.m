@@ -79,7 +79,18 @@
     CGContextBeginPath(UIGraphicsGetCurrentContext());
     
     //begin a new new subpath at this point
-    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 0, bottomY);
+    float spacingH = bottomY / 10;
+    for (int i = 0; i < 10; i++) {
+        
+        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY - i * spacingH);
+        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY - i * spacingH);
+        
+        NSString *strWeight = [NSString stringWithFormat:@"%d", i * 20];
+        
+        [self addText:strWeight withPoint:CGPointMake(12, bottomY - i * spacingH - 8) fontSize:11];
+    }
+    
+    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY);
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY);
     
     NSInteger totalcount = arrData.count;
@@ -92,15 +103,15 @@
     totalcount = 30;
     maxIndex = 29;
     
-    float spacing = (screenSize.width-10) / 30;
+    float spacing = (screenSize.width-25) / 30;
     for (int i = 0; i < totalcount; i++) {
         
-        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 10 + spacing * i, 5);
-        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), 10 + spacing * i, bottomY);
+        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25 + spacing * i, 5);
+        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), 25 + spacing * i, bottomY);
         
         NSString *strDay = [NSString stringWithFormat:@"%d", i+1];
         
-        [self addText:strDay withPoint:CGPointMake(10 + spacing * i, bottomY + 8) fontSize:11];
+        [self addText:strDay withPoint:CGPointMake(25 + spacing * i, bottomY + 8) fontSize:11];
         
     }
     
@@ -115,8 +126,6 @@
     UIGraphicsEndImageContext();
     
     
-    
-    
     FIRUser *user = [[FIRAuth auth] currentUser];
     ref = [[[FIRDatabase database] reference] child:[NSString stringWithFormat:@"users/%@", user.uid]];
     
@@ -127,7 +136,7 @@
         } else {
             arrData = snapshot.value;
             
-            CGRect chartRect = CGRectMake(10, 0, spacing * (arrData.count-1), screenSize.height * 325 / 375.0f);
+            CGRect chartRect = CGRectMake(25, 0, spacing * (arrData.count-1), screenSize.height * 325 / 375.0f);
             lineChartView.frame = chartRect;
             [lineChartView setBackgroundColor:[UIColor clearColor]];
             
@@ -143,7 +152,7 @@
                 
                 float y = lineChartView.frame.size.height * (200-yValue) / 200.0f;
             
-                [firstDotView setFrame:CGRectMake(10, y-3, 6, 6)];
+                [firstDotView setFrame:CGRectMake(25, y-3, 6, 6)];
                 [firstDotView setHidden:NO];
                 
             }
