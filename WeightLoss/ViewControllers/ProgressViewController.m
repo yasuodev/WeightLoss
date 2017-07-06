@@ -28,8 +28,10 @@
     lineChartView = [[JBLineChartView alloc] init];
     lineChartView.dataSource = self;
     lineChartView.delegate = self;
-    [self.graph_bg addSubview:lineChartView];
+    [self.view addSubview:lineChartView];
     
+    [self.view bringSubviewToFront:self.navView];
+        
     firstDotView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 6, 6)];
     [firstDotView setBackgroundColor:[UIColor whiteColor]];
     firstDotView.layer.cornerRadius = 3;
@@ -247,6 +249,7 @@
 {
     return [UIColor whiteColor];
 }
+
 
 - (void)lineChartView:(JBLineChartView *)lineChartView didSelectLineAtIndex:(NSUInteger)lineIndex horizontalIndex:(NSUInteger)horizontalIndex touchPoint:(CGPoint)touchPoint
 {

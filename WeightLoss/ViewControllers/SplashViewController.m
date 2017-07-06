@@ -1,7 +1,11 @@
 
 
 #import "SplashViewController.h"
+#import "MainViewController.h"
 
+#import "MBProgressHUD.h"
+
+@import Firebase;
 
 @interface SplashViewController ()
 
@@ -13,6 +17,30 @@
     [super viewDidLoad];
     
     [self initViews];
+    
+    
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    NSString *email = [userdefaults valueForKey:@"email"];
+    NSString *password = [userdefaults valueForKey:@"password"];
+    
+    if (email != nil && password != nil) {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [[FIRAuth auth] signInWithEmail:email password:password completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            if (error) {
+                [self showDefaultAlert:nil withMessage:@"Login Failed"];
+                return;
+            }
+            
+            MainViewController *mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            [self.navigationController pushViewController:mainVC animated:YES];
+        }];
+    }
+    
+    
     
 }
 

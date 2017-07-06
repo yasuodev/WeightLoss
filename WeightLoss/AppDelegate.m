@@ -9,6 +9,7 @@
 
 #import "AppDelegate.h"
 
+#import "MainViewController.h"
 #import "ProgressViewController.h"
 
 @import Firebase;
@@ -24,7 +25,6 @@
     // Override point for customization after application launch.
     
     [FIRApp configure];
-    
     
     return YES;
 }

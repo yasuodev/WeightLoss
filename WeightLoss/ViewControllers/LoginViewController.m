@@ -123,6 +123,10 @@
                 [self showDefaultAlert:nil withMessage:@"Login Failed"];
                 return;
             }
+            
+            [[NSUserDefaults standardUserDefaults] setValue:email forKey:@"email"];
+            [[NSUserDefaults standardUserDefaults] setValue:password forKey:@"password"];
+            
             MainViewController *mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
             [self.navigationController pushViewController:mainVC animated:YES];
         }];

@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) IBOutlet JBLineChartView *lineChartView;
 
+@property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *graph_bg;
 

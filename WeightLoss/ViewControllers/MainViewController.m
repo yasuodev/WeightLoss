@@ -59,6 +59,9 @@
         NSLog(@"Error signing out: %@", signOutError);
         return;
     } else {
+        [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"email"];
+        [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"password"];
+        
         [self.navigationController popViewControllerAnimated:YES];
     }
     
