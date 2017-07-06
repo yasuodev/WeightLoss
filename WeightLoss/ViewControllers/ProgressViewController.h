@@ -10,7 +10,7 @@
 #import "JBLineChartView.h"
 @import Firebase;
 
-@interface ProgressViewController : UIViewController <JBLineChartViewDelegate, JBLineChartViewDataSource>
+@interface ProgressViewController : UIViewController <JBLineChartViewDelegate, JBLineChartViewDataSource, UIScrollViewDelegate>
 
 @property (nonatomic, strong) FIRDatabaseReference *ref;
 
@@ -20,6 +20,10 @@
 
 @property (weak, nonatomic) IBOutlet UIView *navView;
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *graph_bg;
 
 - (IBAction)onBack:(id)sender;

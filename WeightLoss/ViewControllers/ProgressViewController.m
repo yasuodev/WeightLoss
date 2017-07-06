@@ -25,19 +25,6 @@
     
     arrData = [[NSMutableArray alloc] init];
     
-    lineChartView = [[JBLineChartView alloc] init];
-    lineChartView.dataSource = self;
-    lineChartView.delegate = self;
-    [self.view addSubview:lineChartView];
-    
-    [self.view bringSubviewToFront:self.navView];
-        
-    firstDotView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 6, 6)];
-    [firstDotView setBackgroundColor:[UIColor whiteColor]];
-    firstDotView.layer.cornerRadius = 3;
-    [self.view addSubview:firstDotView];
-    [firstDotView setHidden:YES];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +37,20 @@
     [super viewWillAppear:animated];
     
     [self drawGraphBackground];
+    
+    lineChartView = [[JBLineChartView alloc] init];
+    lineChartView.dataSource = self;
+    lineChartView.delegate = self;
+    [self.contentView addSubview:lineChartView];
+    
+    [self.view bringSubviewToFront:self.navView];
+    
+    firstDotView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 6, 6)];
+    [firstDotView setBackgroundColor:[UIColor whiteColor]];
+    firstDotView.layer.cornerRadius = 3;
+    [self.contentView addSubview:firstDotView];
+    [firstDotView setHidden:YES];
+    
 }
 
 
@@ -276,6 +277,13 @@
     self.lblTitle.text = @"Progress";
 }
 
+
+
+#pragma mark - UIScrollView Delegate
+-(UIView*) viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.contentView;
+}
 
 
 @end
