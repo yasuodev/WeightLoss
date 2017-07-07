@@ -1189,7 +1189,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UnderWeight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDh-q1-uTY">
-                                <rect key="frame" x="149.5" y="170.5" width="96" height="20.5"/>
+                                <rect key="frame" x="150.5" y="170.5" width="96" height="20.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.56078431370000004" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

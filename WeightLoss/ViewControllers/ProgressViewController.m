@@ -79,33 +79,23 @@
     CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 151/255.0f, 151/255.0f, 151/255.0f, 0.5f);
     CGContextBeginPath(UIGraphicsGetCurrentContext());
     
-    //begin a new new subpath at this point
-    float spacingH = bottomY / 10;
-    for (int i = 0; i < 10; i++) {
-        
-        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY - i * spacingH);
-        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY - i * spacingH);
-        
-        NSString *strWeight = [NSString stringWithFormat:@"%d", i * 20];
-        
-        [self addText:strWeight withPoint:CGPointMake(12, bottomY - i * spacingH - 8) fontSize:11];
-    }
-    
-    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY);
-    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY);
     
     NSInteger totalcount = arrData.count;
-    if (totalcount > 30) totalcount = 30;
+    //if (totalcount > 30) totalcount = 30;
     
     NSInteger maxIndex = 29;
     if (self.arrData.count < 30)
         maxIndex = self.arrData.count - 1;
     
-    totalcount = 30;
+//    totalcount = 30;
     maxIndex = 29;
     
     float spacing = (screenSize.width-25) / 30;
-    for (int i = 0; i < totalcount; i++) {
+    NSInteger count = totalcount;
+    if (totalcount < 30) {
+        count = 30;
+    }
+    for (int i = 0; i < count; i++) {
         
         CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25 + spacing * i, 5);
         CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), 25 + spacing * i, bottomY);
@@ -116,15 +106,7 @@
         
     }
     
-    //paint a line along the current path
-    CGContextStrokePath(UIGraphicsGetCurrentContext());
-    CGContextFlush(UIGraphicsGetCurrentContext());
     
-    //set the image based on the contents of the current bitmap-based graphics context
-    self.graph_bg.image = UIGraphicsGetImageFromCurrentImageContext();
-    
-    //remove the current bitmap-based graphics context from the top of the stack
-    UIGraphicsEndImageContext();
     
     
     FIRUser *user = [[FIRAuth auth] currentUser];
@@ -141,25 +123,80 @@
             lineChartView.frame = chartRect;
             [lineChartView setBackgroundColor:[UIColor clearColor]];
             
+            float maxBMI = 0;
+            for (NSDictionary *dicData in arrData) {
+                float bmi = [[dicData valueForKey:@"bmi"] floatValue];
+                if (maxBMI < bmi) {
+                    maxBMI = bmi;
+                }
+            }
+            maxBMI += 50;
             [lineChartView setMinimumValue:0];
-            [lineChartView setMaximumValue:200];
+            [lineChartView setMaximumValue:maxBMI];
             
             [self.lineChartView reloadData];
             
             if (arrData.count == 1) {
                 NSDictionary *dicData = arrData[0];
                 float yValue = 0;
-                yValue = [[dicData valueForKey:@"weight"] floatValue];
+                yValue = [[dicData valueForKey:@"bmi"] floatValue];
                 
-                float y = lineChartView.frame.size.height * (200-yValue) / 200.0f;
+                float y = lineChartView.frame.size.height * (maxBMI-yValue) / 200.0f;
             
                 [firstDotView setFrame:CGRectMake(25, y-3, 6, 6)];
                 [firstDotView setHidden:NO];
                 
             }
             
+            if (maxBMI < 100) {
+                
+                int count = maxBMI / 10;
+                for (int i = 0; i < count; i++) {
+                    
+                    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY * (1 - i * 10 / maxBMI) );
+                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY * (1 - i * 10 / maxBMI) );
+                    
+                    NSString *strWeight = [NSString stringWithFormat:@"%d", i * 10];
+                    
+                    [self addText:strWeight withPoint:CGPointMake(12, bottomY * (1 - i * 10 / maxBMI) - 8) fontSize:11];
+                }
+            } else if (maxBMI < 500) {
+                
+                int count = maxBMI / 50;
+                for (int i = 0; i < count; i++) {
+                    
+                    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY * (1 - i * 50 / maxBMI) );
+                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY * (1 - i * 50 / maxBMI) );
+                    
+                    NSString *strWeight = [NSString stringWithFormat:@"%d", i * 50];
+                    
+                    [self addText:strWeight withPoint:CGPointMake(12, bottomY * (1 - i * 50 / maxBMI) - 8) fontSize:11];
+                }
+            } else {
+                int count = maxBMI / 100;
+                for (int i = 0; i < count; i++) {
+                    
+                    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY * (1 - i * 100 / maxBMI) );
+                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY * (1 - i * 100 / maxBMI) );
+                    
+                    NSString *strWeight = [NSString stringWithFormat:@"%d", i * 100];
+                    
+                    [self addText:strWeight withPoint:CGPointMake(12, bottomY * (1 - i * 100 / maxBMI) - 8) fontSize:11];
+                }
+            }
             
+            CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY);
+            CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY);
             
+            //paint a line along the current path
+            CGContextStrokePath(UIGraphicsGetCurrentContext());
+            CGContextFlush(UIGraphicsGetCurrentContext());
+            
+            //set the image based on the contents of the current bitmap-based graphics context
+            self.graph_bg.image = UIGraphicsGetImageFromCurrentImageContext();
+            
+            //remove the current bitmap-based graphics context from the top of the stack
+            UIGraphicsEndImageContext();
         }
     }];
     
@@ -203,7 +240,7 @@
     NSDictionary *dicData = arrData[horizontalIndex];
     
     float yValue = 0;
-    yValue = [[dicData valueForKey:@"weight"] floatValue];
+    yValue = [[dicData valueForKey:@"bmi"] floatValue];
     
     return yValue;
 }
@@ -266,10 +303,12 @@
     NSDictionary *dicData = arrData[horizontalIndex];
     
     NSString *date = [dicData valueForKey:@"date"];
+    NSString *height = [dicData valueForKey:@"height"];
     NSString *weight = [dicData valueForKey:@"weight"];
-    NSString *strTitle = [NSString stringWithFormat:@"%@ - %@Kg", date, weight];
+    NSString *bmi = [dicData valueForKey:@"bmi"];
     
-    self.lblTitle.text = strTitle;
+    [self showDefaultAlert:date withMessage:[NSString stringWithFormat:@"Height: %@m\nWeight: %@Kg\nBMI: %@", height, weight, bmi]];
+    
 }
 
 - (void)didDeselectLineInLineChartView:(JBLineChartView *)lineChartView
@@ -285,5 +324,13 @@
     return self.contentView;
 }
 
+#pragma mark - show default alert
+-(void) showDefaultAlert:(NSString*)title withMessage:(NSString*)message
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:okAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 @end
