@@ -62,51 +62,9 @@
 -(void) drawGraphBackground
 {
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CGRect rect = CGRectMake(0, 0, screenSize.width, screenSize.height);
+    //CGRect rect = CGRectMake(0, 0, screenSize.width, screenSize.height);
     
     float bottomY = screenSize.height * 325 / 375.0f;
-    
-    
-    UIGraphicsBeginImageContext(screenSize);
-    
-    //draw the entire image in the specified rectangle frame
-    [self.graph_bg.image drawInRect:rect];
-    
-    
-    //set line cap, width, stroke color and begin path
-    CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 0.1f);
-    CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 151/255.0f, 151/255.0f, 151/255.0f, 0.5f);
-    CGContextBeginPath(UIGraphicsGetCurrentContext());
-    
-    
-    NSInteger totalcount = arrData.count;
-    //if (totalcount > 30) totalcount = 30;
-    
-    NSInteger maxIndex = 29;
-    if (self.arrData.count < 30)
-        maxIndex = self.arrData.count - 1;
-    
-//    totalcount = 30;
-    maxIndex = 29;
-    
-    float spacing = (screenSize.width-25) / 30;
-    NSInteger count = totalcount;
-    if (totalcount < 30) {
-        count = 30;
-    }
-    for (int i = 0; i < count; i++) {
-        
-        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25 + spacing * i, 5);
-        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), 25 + spacing * i, bottomY);
-        
-        NSString *strDay = [NSString stringWithFormat:@"%d", i+1];
-        
-        [self addText:strDay withPoint:CGPointMake(25 + spacing * i, bottomY + 8) fontSize:11];
-        
-    }
-    
-    
     
     
     FIRUser *user = [[FIRAuth auth] currentUser];
@@ -119,7 +77,38 @@
         } else {
             arrData = snapshot.value;
             
-            CGRect chartRect = CGRectMake(25, 0, spacing * (arrData.count-1), screenSize.height * 325 / 375.0f);
+            NSInteger totalcount = arrData.count;
+            float spacing = (screenSize.width-25) / 30;
+            
+            CGSize size = CGSizeMake(25 + spacing * totalcount, screenSize.height);
+            UIGraphicsBeginImageContext(size);
+            
+            //draw the entire image in the specified rectangle frame
+            CGRect rect = CGRectMake(0, 0, size.width, screenSize.height);
+            [self.graph_bg.image drawInRect:rect];
+            
+            
+            //set line cap, width, stroke color and begin path
+            CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
+            CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 0.1f);
+            CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 151/255.0f, 151/255.0f, 151/255.0f, 0.5f);
+            CGContextBeginPath(UIGraphicsGetCurrentContext());
+    
+            self.graphWidthConstraint.constant = 25 + spacing * totalcount;
+            [self.view layoutIfNeeded];
+            
+            for (int i = 0; i < totalcount; i++) {
+                
+                CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25 + spacing * i, 5);
+                CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), 25 + spacing * i, bottomY);
+                
+                NSString *strDay = [NSString stringWithFormat:@"%d", i+1];
+                
+                [self addText:strDay withPoint:CGPointMake(25 + spacing * i, bottomY + 8) fontSize:11];
+                
+            }
+            
+            CGRect chartRect = CGRectMake(25, 0, spacing * (totalcount-1), screenSize.height * 325 / 375.0f);
             lineChartView.frame = chartRect;
             [lineChartView setBackgroundColor:[UIColor clearColor]];
             
@@ -154,7 +143,7 @@
                 for (int i = 0; i < count; i++) {
                     
                     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY * (1 - i * 10 / maxBMI) );
-                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY * (1 - i * 10 / maxBMI) );
+                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), spacing * totalcount, bottomY * (1 - i * 10 / maxBMI) );
                     
                     NSString *strWeight = [NSString stringWithFormat:@"%d", i * 10];
                     
@@ -166,7 +155,7 @@
                 for (int i = 0; i < count; i++) {
                     
                     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY * (1 - i * 50 / maxBMI) );
-                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY * (1 - i * 50 / maxBMI) );
+                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), spacing * totalcount, bottomY * (1 - i * 50 / maxBMI) );
                     
                     NSString *strWeight = [NSString stringWithFormat:@"%d", i * 50];
                     
@@ -177,7 +166,7 @@
                 for (int i = 0; i < count; i++) {
                     
                     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY * (1 - i * 100 / maxBMI) );
-                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), screenSize.width, bottomY * (1 - i * 100 / maxBMI) );
+                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), spacing * totalcount, bottomY * (1 - i * 100 / maxBMI) );
                     
                     NSString *strWeight = [NSString stringWithFormat:@"%d", i * 100];
                     
@@ -230,9 +219,7 @@
 
 - (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex
 {
-    if (arrData.count < 30)
-        return arrData.count;
-    return 30;
+    return arrData.count;
 }
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex
@@ -304,10 +291,10 @@
     
     NSString *date = [dicData valueForKey:@"date"];
     NSString *height = [dicData valueForKey:@"height"];
-    NSString *weight = [dicData valueForKey:@"weight"];
-    NSString *bmi = [dicData valueForKey:@"bmi"];
+    float weight = [[dicData valueForKey:@"weight"] floatValue];
+    float bmi = [[dicData valueForKey:@"bmi"] floatValue];
     
-    [self showDefaultAlert:date withMessage:[NSString stringWithFormat:@"Height: %@m\nWeight: %@Kg\nBMI: %@", height, weight, bmi]];
+    [self showDefaultAlert:date withMessage:[NSString stringWithFormat:@"Height: %@m\nWeight: %.1fKg\nBMI: %.2f", height, weight, bmi]];
     
 }
 
