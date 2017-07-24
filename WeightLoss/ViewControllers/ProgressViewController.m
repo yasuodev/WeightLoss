@@ -305,7 +305,7 @@
         float regressionEquation = slope + intercept * (horizontalIndex + 1);
         return regressionEquation + fabs(minBMI);
     } else if (lineIndex == 2) {
-        float regressionEquation = slope1 + intercept1 * weight;
+        float regressionEquation = slope1 + intercept1 * (horizontalIndex + 1);
         return regressionEquation + fabs(minBMI);
     }
     
