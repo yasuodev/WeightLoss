@@ -11,6 +11,14 @@
 @interface ProgressViewController ()
 {
     UIView *firstDotView;
+    
+    float sumX, sumY, sumXY, sumXX, number;
+    float slope, intercept;
+    
+    float sumX1, sumXY1, sumXX1;
+    float slope1, intercept1;
+    float minBMI;
+    
 }
 @end
 
@@ -24,7 +32,12 @@
     // Do any additional setup after loading the view.
     
     arrData = [[NSMutableArray alloc] init];
+    sumX = sumY = sumXY = sumXX = 0;
+    slope = intercept = 0;
     
+    sumX1 = sumXY1 = sumXX1 = 0;
+    slope1 = intercept1 = 0;
+    minBMI = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,6 +48,7 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     
     [self drawGraphBackground];
     
@@ -112,16 +126,67 @@
             lineChartView.frame = chartRect;
             [lineChartView setBackgroundColor:[UIColor clearColor]];
             
+            for (int i = 0; i < arrData.count; i++) {
+                
+                NSDictionary *dic = arrData[i];
+                float y = [[dic valueForKey:@"bmi"] floatValue];
+                float weight = [[dic valueForKey:@"weight"] floatValue];
+                
+                sumX += (i+1);
+                sumY += y;
+                sumXX += (i+1) * (i+1);
+                sumXY += (i+1) * y;
+                
+                sumX1 += weight;
+                sumXX1 += weight * weight;
+                sumXY1 += weight * y;
+                
+            }
+            
+            number = arrData.count;
+            
+            slope = (number * sumXY - sumX * sumY) / (number * sumXX - sumX * sumX);
+            intercept = (sumY - slope * sumX) / (float)number;
+            
+            slope1 = (number * sumXY1 - sumX1 * sumY) / (number * sumXX1 - sumX1 * sumX1);
+            intercept1 = (sumY - slope1 * sumX1) / (float)number;
+            
             float maxBMI = 0;
-            for (NSDictionary *dicData in arrData) {
+            minBMI = 0;
+            for (int i = 0; i < arrData.count; i++) {
+                NSDictionary *dicData = arrData[i];
                 float bmi = [[dicData valueForKey:@"bmi"] floatValue];
+                float weight = [[dicData valueForKey:@"weight"] floatValue];
+                
+                float regressionEquation = slope + intercept * (i + 1);
+                float regressionEquation1 = slope1 + intercept1 * weight;
+                
                 if (maxBMI < bmi) {
                     maxBMI = bmi;
                 }
+                if (maxBMI < regressionEquation) {
+                    maxBMI = regressionEquation;
+                }
+                if (maxBMI < regressionEquation1) {
+                    maxBMI = regressionEquation1;
+                }
+                
+                if (minBMI > bmi) {
+                    minBMI = bmi;
+                }
+                if (minBMI > regressionEquation) {
+                    minBMI = regressionEquation;
+                }
+                if (minBMI > regressionEquation1) {
+                    minBMI = regressionEquation1;
+                }
             }
+            
+            if (minBMI > 0) minBMI = 0;
+            
             maxBMI += 50;
             [lineChartView setMinimumValue:0];
-            [lineChartView setMaximumValue:maxBMI];
+            [lineChartView setMaximumValue: (maxBMI - minBMI)];
             
             [self.lineChartView reloadData];
             
@@ -137,9 +202,10 @@
                 
             }
             
-            if (maxBMI < 100) {
+            if (maxBMI + fabsf(minBMI) < 100) {
                 
-                int count = maxBMI / 10;
+                int count = (maxBMI - minBMI) / 10;
+                
                 for (int i = 0; i < count; i++) {
                     
                     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY * (1 - i * 10 / maxBMI) );
@@ -149,7 +215,7 @@
                     
                     [self addText:strWeight withPoint:CGPointMake(12, bottomY * (1 - i * 10 / maxBMI) - 8) fontSize:11];
                 }
-            } else if (maxBMI < 500) {
+            } else if (maxBMI + fabsf(minBMI) < 500) {
                 
                 int count = maxBMI / 50;
                 for (int i = 0; i < count; i++) {
@@ -162,15 +228,20 @@
                     [self addText:strWeight withPoint:CGPointMake(12, bottomY * (1 - i * 50 / maxBMI) - 8) fontSize:11];
                 }
             } else {
-                int count = maxBMI / 100;
-                for (int i = 0; i < count; i++) {
+                
+                int minCount = minBMI / 100;
+                int maxCount = maxBMI / 100;
+                float bottomZero = bottomY * (maxBMI) / (maxBMI - minBMI);
+                float interval = bottomY * 100 / (maxBMI - minBMI);
+                
+                for (int i = minCount; i <= maxCount; i++) {
                     
-                    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomY * (1 - i * 100 / maxBMI) );
-                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), spacing * totalcount, bottomY * (1 - i * 100 / maxBMI) );
+                    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 25, bottomZero - interval * i);
+                    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), spacing * totalcount, bottomZero - interval * i );
                     
                     NSString *strWeight = [NSString stringWithFormat:@"%d", i * 100];
                     
-                    [self addText:strWeight withPoint:CGPointMake(12, bottomY * (1 - i * 100 / maxBMI) - 8) fontSize:11];
+                    [self addText:strWeight withPoint:CGPointMake(12, bottomZero - interval * i - 8) fontSize:11];
                 }
             }
             
@@ -213,7 +284,7 @@
 #pragma mark - JBLineChartView datasource
 - (NSUInteger)numberOfLinesInLineChartView:(JBLineChartView *)lineChartView
 {
-    return 1;
+    return 3;
 }
 
 
@@ -228,12 +299,26 @@
     
     float yValue = 0;
     yValue = [[dicData valueForKey:@"bmi"] floatValue];
+    float weight = [[dicData valueForKey:@"weight"] floatValue];
     
-    return yValue;
+    if (lineIndex == 1) {
+        float regressionEquation = slope + intercept * (horizontalIndex + 1);
+        return regressionEquation + fabs(minBMI);
+    } else if (lineIndex == 2) {
+        float regressionEquation = slope1 + intercept1 * weight;
+        return regressionEquation + fabs(minBMI);
+    }
+    
+    return yValue + fabs(minBMI);
 }
 
 - (UIColor *)lineChartView:(JBLineChartView *)lineChartView colorForLineAtLineIndex:(NSUInteger)lineIndex
 {
+    if (lineIndex == 1) {
+        return [UIColor redColor];
+    } else if (lineIndex == 2) {
+        return [UIColor yellowColor];
+    }
     return [UIColor colorWithRed:122/255.0f green:218/255.0f blue:1 alpha:1];
 }
 
